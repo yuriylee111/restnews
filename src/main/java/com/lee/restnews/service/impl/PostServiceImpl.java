@@ -6,6 +6,7 @@ import com.lee.restnews.entity.Post;
 import com.lee.restnews.exception.ResourceNotFoundException;
 import com.lee.restnews.repository.PostRepository;
 import com.lee.restnews.service.PostService;
+import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
@@ -22,14 +23,15 @@ import static com.lee.restnews.util.Constant.POST;
 public class PostServiceImpl implements PostService {
 
     private final PostRepository postRepository;
+    private final ModelMapper mapper;
 
-    public PostServiceImpl(PostRepository postRepository) {
+    public PostServiceImpl(PostRepository postRepository, ModelMapper mapper) {
         this.postRepository = postRepository;
+        this.mapper = mapper;
     }
 
     @Override
     public PostDto createPost(PostDto postDto) {
-
         Post post = mapToEntity(postDto);
         Post newPost = postRepository.save(post);
         return mapToDto(newPost);
@@ -81,21 +83,11 @@ public class PostServiceImpl implements PostService {
         postRepository.delete(post);
     }
 
-
     private PostDto mapToDto(Post post) {
-        PostDto postDto = new PostDto();
-        postDto.setId(post.getId());
-        postDto.setTitle(post.getTitle());
-        postDto.setDescription(post.getDescription());
-        postDto.setContent(post.getContent());
-        return postDto;
+        return mapper.map(post, PostDto.class);
     }
 
     private Post mapToEntity(PostDto postDto) {
-        Post post = new Post();
-        post.setTitle(postDto.getTitle());
-        post.setDescription(postDto.getDescription());
-        post.setContent(postDto.getContent());
-        return post;
+        return mapper.map(postDto, Post.class);
     }
 }

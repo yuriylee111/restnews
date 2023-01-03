@@ -8,6 +8,7 @@ import com.lee.restnews.exception.ResourceNotFoundException;
 import com.lee.restnews.repository.CommentRepository;
 import com.lee.restnews.repository.PostRepository;
 import com.lee.restnews.service.CommentService;
+import org.modelmapper.ModelMapper;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
@@ -21,10 +22,12 @@ public class CommentServiceImpl implements CommentService {
 
     private final CommentRepository commentRepository;
     private final PostRepository postRepository;
+    private final ModelMapper mapper;
 
-    public CommentServiceImpl(CommentRepository commentRepository, PostRepository postRepository) {
+    public CommentServiceImpl(CommentRepository commentRepository, PostRepository postRepository, ModelMapper mapper) {
         this.commentRepository = commentRepository;
         this.postRepository = postRepository;
+        this.mapper = mapper;
     }
 
     @Override
@@ -80,21 +83,11 @@ public class CommentServiceImpl implements CommentService {
     }
 
     private CommentDto mapToDto(Comment comment) {
-        CommentDto commentDto = new CommentDto();
-        commentDto.setId(comment.getId());
-        commentDto.setUserName(comment.getUserName());
-        commentDto.setEmail(comment.getEmail());
-        commentDto.setTextBody(comment.getTextBody());
-        return commentDto;
+        return mapper.map(comment, CommentDto.class);
     }
 
     private Comment mapToEntity(CommentDto commentDto) {
-        Comment comment = new Comment();
-        comment.setId(commentDto.getId());
-        comment.setUserName(commentDto.getUserName());
-        comment.setEmail(commentDto.getEmail());
-        comment.setTextBody(commentDto.getTextBody());
-        return comment;
+        return mapper.map(commentDto, Comment.class);
     }
 
     private Post getPostById(Long postId) {
