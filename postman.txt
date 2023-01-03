@@ -1,0 +1,47 @@
+--POST--
+
+{
+    "title": "My first title",
+    "description": "My first description",
+    "content": "My first content"
+}
+
+
+POST http://localhost:8080/api/posts
+
+GET http://localhost:8080/api/posts
+
+GET http://localhost:8080/api/posts/1
+
+GET http://localhost:8080/api/posts?pageNo=0&pageSize=4
+
+GET http://localhost:8080/api/posts?pageNo=0&pageSize=15&sortBy=title
+
+GET http://localhost:8080/api/posts?pageNo=0&pageSize=15&sortBy=description&sortDir=desc
+
+PUT http://localhost:8080/api/posts/1
+
+DELETE http://localhost:8080/api/posts/1
+
+
+
+
+--COMMENT--
+
+{
+    "userName": "AAA name",
+    "email": "aaa@mail.com",
+    "textBody": "My first text"
+}
+
+
+POST http://localhost:8080/api/posts/1/comments
+
+GET http://localhost:8080/api/posts/1/comments
+
+GET http://localhost:8080/api/posts/1/comments/1
+
+PUT http://localhost:8080/api/posts/1/comments/1
+
+DELETE http://localhost:8080/api/posts/1/comments/1
+
