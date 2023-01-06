@@ -1,5 +1,6 @@
 package com.lee.restnews.controller;
 
+import com.lee.restnews.dto.JwtAuthResponse;
 import com.lee.restnews.dto.LoginDto;
 import com.lee.restnews.dto.RegisterDto;
 import com.lee.restnews.service.AuthService;
@@ -21,9 +22,13 @@ public class AuthController {
     }
 
     @PostMapping(value = {"/login", "/signin"})
-    public ResponseEntity<String> login(@RequestBody LoginDto loginDto) {
-        String response = authService.login(loginDto);
-        return ResponseEntity.ok(response);
+    public ResponseEntity<JwtAuthResponse> login(@RequestBody LoginDto loginDto) {
+        String token = authService.login(loginDto);
+
+        JwtAuthResponse jwtAuthResponse = new JwtAuthResponse();
+        jwtAuthResponse.setAccessToken(token);
+
+        return ResponseEntity.ok(jwtAuthResponse);
     }
 
     @PostMapping(value = {"/register", "/signup"})
