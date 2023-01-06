@@ -49,10 +49,22 @@ DELETE http://localhost:8080/api/posts/1/comments/1
 
 --LOGIN--
 
-http://localhost:8080/api/auth/login
+POST http://localhost:8080/api/auth/login
 
 {
     "usernameOrEmail":"yuriy",
     "password":"yuriy"
+}
+
+
+--REGISTER--
+
+POST http://localhost:8080/api/auth/register
+
+{
+    "fullName":"new user",
+    "username":"user",
+    "email":"user@gmail.co",
+    "password":"user"
 }
 
