@@ -2,7 +2,7 @@
 
 Spring Boot REST API
 
-Spring Security
+Spring Security, JSON Web Token
 
 JSON patterns are in postman.txt
 

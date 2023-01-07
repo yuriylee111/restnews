@@ -6,24 +6,14 @@
     "content": "My first content"
 }
 
-
 POST http://localhost:8080/api/posts
-
 GET http://localhost:8080/api/posts
-
 GET http://localhost:8080/api/posts/1
-
 GET http://localhost:8080/api/posts?pageNo=0&pageSize=4
-
 GET http://localhost:8080/api/posts?pageNo=0&pageSize=15&sortBy=title
-
 GET http://localhost:8080/api/posts?pageNo=0&pageSize=15&sortBy=description&sortDir=desc
-
 PUT http://localhost:8080/api/posts/1
-
 DELETE http://localhost:8080/api/posts/1
-
-
 
 
 --COMMENT--
@@ -34,15 +24,10 @@ DELETE http://localhost:8080/api/posts/1
     "textBody": "My first text"
 }
 
-
 POST http://localhost:8080/api/posts/1/comments
-
 GET http://localhost:8080/api/posts/1/comments
-
 GET http://localhost:8080/api/posts/1/comments/1
-
 PUT http://localhost:8080/api/posts/1/comments/1
-
 DELETE http://localhost:8080/api/posts/1/comments/1
 
 
@@ -52,8 +37,8 @@ DELETE http://localhost:8080/api/posts/1/comments/1
 POST http://localhost:8080/api/auth/login
 
 {
-    "usernameOrEmail":"yuriy",
-    "password":"yuriy"
+    "usernameOrEmail":"admin",
+    "password":"admin"
 }
 
 
@@ -62,9 +47,38 @@ POST http://localhost:8080/api/auth/login
 POST http://localhost:8080/api/auth/register
 
 {
-    "fullName":"new user",
-    "username":"user",
-    "email":"user@gmail.co",
-    "password":"user"
+    "fullName":"administrator",
+    "username":"admin",
+    "email":"admin@gmail.co",
+    "password":"admin"
 }
 
+
+--CATEGORY--
+
+POST http://localhost:8080/api/categories
+
+{
+    "name":"Java 8",
+    "description":"Java 8 category"
+}
+
+GET http://localhost:8080/api/categories
+GET http://localhost:8080/api/categories/1
+PUT http://localhost:8080/api/categories/1
+DELETE http://localhost:8080/api/categories/1
+
+
+--POST--
+
+POST http://localhost:8080/api/posts
+
+{
+    "title": "Plus title",
+    "description": "Plus description",
+    "content": "Plus content",
+    "categoryId":1
+}
+
+PUT http://localhost:8080/api/posts/1
+GET http://localhost:8080/api/posts/category/1

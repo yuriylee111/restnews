@@ -15,4 +15,5 @@ public class Constant {
     public static final String ID = "id";
     public static final String POST = "Post";
     public static final String COMMENT = "Comment";
+    public static final String CATEGORY = "Category";
 }
