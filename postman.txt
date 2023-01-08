@@ -82,3 +82,9 @@ POST http://localhost:8080/api/posts
 
 PUT http://localhost:8080/api/posts/1
 GET http://localhost:8080/api/posts/category/1
+
+
+--VERSIONING--
+
+GET http://localhost:8080/api/v1/posts/1
+GET http://localhost:8080/api/v2/posts/1
