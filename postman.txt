@@ -41,6 +41,11 @@ POST http://localhost:8080/api/auth/login
     "password":"admin"
 }
 
+// for login -> Authorization: no Auth
+// SEND button -> copy token
+
+// to use POST, PUT, DELETE methods:
+// Authorization tab -> Type Bearer Token -> paste token
 
 --REGISTER--
 
